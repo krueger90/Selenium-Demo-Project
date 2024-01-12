@@ -7,19 +7,18 @@ import org.testng.annotations.BeforeMethod;
 
 public class Setup {
 
-    private String driverPath = "F:/Selenium-Demo-Project/selenium-java-demo/chromedriver.exe";
-    private WebDriver driver;
+    private String driverPath = "chromedriver.exe";
+    protected WebDriver driver = new ChromeDriver();
 
     @BeforeClass
     public void setup() {
         System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.manage().window().maximize();
     }
 
     @BeforeMethod
-    public void openBrowser(){
+    public void openBrowser() {
         driver.get("https://ecommerce-playground.lambdatest.io");
     }
 
