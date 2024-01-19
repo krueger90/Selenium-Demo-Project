@@ -13,9 +13,9 @@ public class Setup {
     private String driverPath = "chromedriver.exe";
     protected WebDriver driver = new ChromeDriver();
 
-     Wait<WebDriver> wait = new FluentWait<>(driver)
-    .withTimeout(Duration.ofSeconds(5))
-    .pollingEvery(Duration.ofMillis(500));
+    Wait<WebDriver> wait = new FluentWait<>(driver)
+            .withTimeout(Duration.ofSeconds(5))
+            .pollingEvery(Duration.ofMillis(500));
 
     @BeforeClass
     public void setup() {
