@@ -1,8 +1,6 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,8 +11,6 @@ public class RegisterUserTest extends Setup {
     private String phone;
     private String pass;
     private String confirmPass;
-
-    Wait<WebDriver> wait = new FluentWait<>(driver);
 
     By firstName = By.id("input-firstname");
     By lastName = By.id("input-lastname");
@@ -36,7 +32,6 @@ public class RegisterUserTest extends Setup {
 
     @Test
     public void registerUser() throws InterruptedException {
-
         driver.get(driver.getCurrentUrl() + "/index.php?route=account/register");
 
         driver.findElement(this.firstName).sendKeys(firstname);
