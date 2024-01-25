@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeMethod;
 public class Setup {
 
     private static final String RUNNING_ENV = System.getenv("ENVIRONMENT");
-    protected WebDriver driver = new ChromeDriver();
+    protected WebDriver driver = new FirefoxDriver();
 
     Wait<WebDriver> wait = new FluentWait<>(driver)
             .withTimeout(Duration.ofSeconds(5))
