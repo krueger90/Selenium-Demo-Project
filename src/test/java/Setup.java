@@ -2,6 +2,8 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.annotations.AfterClass;
@@ -21,12 +23,12 @@ public class Setup {
     @BeforeClass
     public void setup() {
         if (RUNNING_ENV == "Pipeline") {
-            ChromeOptions options = new ChromeOptions();
+            FirefoxOptions options = new FirefoxOptions();
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
             options.addArguments("--headless");
-            driver = new ChromeDriver(options);
+            driver = new FirefoxDriver(options);
         } else {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
             driver.manage().window().maximize();
