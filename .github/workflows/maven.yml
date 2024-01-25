@@ -10,6 +10,9 @@ name: Selenium Demo
 
 on: [push]
 
+env:
+  ENVIRONMENT: Pipeline
+
 jobs:
   build:
 

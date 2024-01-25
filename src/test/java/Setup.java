@@ -1,6 +1,7 @@
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.annotations.AfterClass;
@@ -10,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 
 public class Setup {
 
+    private static final String RUNNING_ENV = System.getenv("ENVIRONMENT");
     protected WebDriver driver = new ChromeDriver();
 
     Wait<WebDriver> wait = new FluentWait<>(driver)
@@ -18,10 +20,18 @@ public class Setup {
 
     @BeforeClass
     public void setup() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        driver.manage().window().maximize();
+        if (RUNNING_ENV == "Pipeline") {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--headless");
+            driver = new ChromeDriver(options);
+        } else {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+            driver.manage().window().maximize();
+        }
     }
-//vezi cum faci sa ai config diferit in functie de env, pipeline sau local; citeste un env variable cumva
+
     @BeforeMethod
     public void openBrowser() {
         driver.get("https://ecommerce-playground.lambdatest.io");
