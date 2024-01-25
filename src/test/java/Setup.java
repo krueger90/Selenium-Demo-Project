@@ -10,7 +10,6 @@ import org.testng.annotations.BeforeMethod;
 
 public class Setup {
 
-    private String driverPath = "chromedriver.exe";
     protected WebDriver driver = new ChromeDriver();
 
     Wait<WebDriver> wait = new FluentWait<>(driver)
@@ -19,11 +18,10 @@ public class Setup {
 
     @BeforeClass
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", driverPath);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.manage().window().maximize();
     }
-
+//vezi cum faci sa ai config diferit in functie de env, pipeline sau local; citeste un env variable cumva
     @BeforeMethod
     public void openBrowser() {
         driver.get("https://ecommerce-playground.lambdatest.io");
