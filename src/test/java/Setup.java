@@ -20,16 +20,22 @@ public class Setup {
 
     @BeforeClass
     public void setup() {
-        if (System.getProperty("GITHUB_RUN_ID") != null) {
-            options.addArguments("--headless");
-            options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--disable-gpu");
-            driver = new ChromeDriver(options);
-        } else {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-            driver.manage().window().maximize();
-        }
+        System.out.println(System.getenv("GITHUB_RUN_ID"));
+        // if (System.getenv("GITHUB_RUN_ID") != null) {
+        //     options.addArguments("--headless");
+        //     options.addArguments("--no-sandbox");
+        //     options.addArguments("--disable-dev-shm-usage");
+        //     options.addArguments("--disable-gpu");
+        //     driver = new ChromeDriver(options);
+        // } else {
+        //     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        //     driver.manage().window().maximize();
+        // }
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        driver = new ChromeDriver(options);
     }
 
     @BeforeMethod
