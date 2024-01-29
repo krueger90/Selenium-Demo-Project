@@ -11,8 +11,8 @@ import org.testng.annotations.BeforeMethod;
 
 public class Setup {
 
- 
     protected WebDriver driver = new ChromeDriver();
+    ChromeOptions options = new ChromeOptions();
 
     Wait<WebDriver> wait = new FluentWait<>(driver)
             .withTimeout(Duration.ofSeconds(5))
@@ -20,10 +20,7 @@ public class Setup {
 
     @BeforeClass
     public void setup() {
-          String RUNNING_ENV = System.getenv("ENVIRONMENT");
-        if (RUNNING_ENV == "Pipeline") {
-            System.out.println("AM INTRAT!!!!");
-            ChromeOptions options = new ChromeOptions();
+        if (System.getenv("ENVIRONMENT") == "Pipeline") {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
