@@ -20,7 +20,7 @@ public class Setup {
 
     @BeforeClass
     public void setup() {
-        if (!System.getenv("GITHUB_RUN_ID").isEmpty()) {
+        if (System.getProperty("GITHUB_RUN_ID") != null) {
             options.addArguments("--headless");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
