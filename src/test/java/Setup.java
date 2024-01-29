@@ -20,11 +20,11 @@ public class Setup {
 
     @BeforeClass
     public void setup() {
-        if (System.getenv("ENVIRONMENT") == "Pipeline") {
+        if (!System.getenv("GITHUB_RUN_ID").isEmpty()) {
+            options.addArguments("--headless");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
-            options.addArguments("--headless");
             driver = new ChromeDriver(options);
         } else {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
