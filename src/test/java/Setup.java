@@ -25,7 +25,7 @@ public class Setup {
         System.out.println(System.getProperty("GITHUB_RUN_ID") + " AICI...");
         if (System.getProperty("ENV") == "PIPELINE") {
             System.out.println(System.getProperty("GITHUB_RUN_ID") + " AICI...");
-
+            options.setBinary("/opt/hostedtoolcache/chromium/latest/x64/chrome");
             options.addArguments("--headless=new");
             options.addArguments("--window-size=1920,1080");
             options.addArguments("--start-maximized");
