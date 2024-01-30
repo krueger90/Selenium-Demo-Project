@@ -23,7 +23,7 @@ public class Setup {
         ChromeOptions options = new ChromeOptions();
 
         System.out.println(System.getProperty("GITHUB_RUN_ID") + " AICI...");
-        if (System.getProperty("GITHUB_RUN_ID") != null) {
+        if (System.getProperty("ENV") == "PIPELINE") {
             System.out.println(System.getProperty("GITHUB_RUN_ID") + " AICI...");
 
             options.addArguments("--headless=new");
