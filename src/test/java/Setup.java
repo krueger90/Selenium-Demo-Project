@@ -8,6 +8,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 public class Setup {
 
@@ -18,13 +19,13 @@ public class Setup {
             .withTimeout(Duration.ofSeconds(5))
             .pollingEvery(Duration.ofMillis(500));
 
-    @BeforeClass
+    @BeforeSuite
     public void setup() {
         ChromeOptions options = new ChromeOptions();
 
-        System.out.println(System.getProperty("GITHUB_RUN_ID") + " AICI...");
+        System.out.println(System.getProperty("ENV") + " AICI...");
         if (System.getProperty("ENV") == "PIPELINE") {
-            System.out.println(System.getProperty("GITHUB_RUN_ID") + " AICI...");
+            System.out.println(System.getProperty("ENV") + " AICI...");
             options.setBinary("/opt/hostedtoolcache/chromium/latest/x64/chrome");
             options.addArguments("--headless=new");
             options.addArguments("--window-size=1920,1080");
