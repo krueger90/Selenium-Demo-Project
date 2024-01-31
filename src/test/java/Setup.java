@@ -10,6 +10,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 public class Setup {
 
@@ -20,7 +21,7 @@ public class Setup {
             .withTimeout(Duration.ofSeconds(5))
             .pollingEvery(Duration.ofMillis(500));
 
-    @BeforeMethod
+    @BeforeTest
     public void setup() {
         if (System.getProperty("ENV") == "PIPELINE") {
             ChromeOptions options = new ChromeOptions();
