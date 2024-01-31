@@ -24,11 +24,10 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Install Chrome    
-      uses: browser-actions/setup-chrome@latest  
+    - name: Install Chrome 
+      run: | 
+       chmod +x ./src/test/resources/installChrome.sh
+        ./src/test/resources/installChrome.sh   
     
-    - name: Build with Maven
-      run: mvn clean install -DskipTests
-
     - name: Run tests
       run: mvn test
