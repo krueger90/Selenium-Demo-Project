@@ -1,6 +1,11 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <suite name="User Actions" verbose="1">
+  <test name="Setup">
+    <classes>
+      <class name="Setup"></class>
+    </classes>
+    </test>
   <test name="Register User">
     <classes>
       <class name="RegisterUserTest"></class>
