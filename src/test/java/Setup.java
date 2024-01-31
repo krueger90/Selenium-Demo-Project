@@ -6,12 +6,8 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 
 public class Setup {
 
@@ -22,7 +18,7 @@ public class Setup {
             .withTimeout(Duration.ofSeconds(5))
             .pollingEvery(Duration.ofMillis(500));
 
-    @BeforeTest
+    @BeforeClass
     public void setup() {
         if (System.getProperty("ENV") == "PIPELINE") {
             ChromeOptions options = new ChromeOptions();
@@ -35,18 +31,16 @@ public class Setup {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             driver = new ChromeDriver(options);
-            driver.get("https://ecommerce-playground.lambdatest.io");
         } else {
-            driver.get("https://ecommerce-playground.lambdatest.io");
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
             driver.manage().window().maximize();
         }
     }
 
-    // @BeforeMethod
-    // public void openBrowser() {
-    // driver.get("https://ecommerce-playground.lambdatest.io");
-    // }
+    @BeforeMethod
+    public void openBrowser() {
+    driver.get("https://ecommerce-playground.lambdatest.io");
+    }
 
     @AfterMethod
     public void clearCookies() {
