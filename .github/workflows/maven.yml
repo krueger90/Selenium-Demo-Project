@@ -25,9 +25,12 @@ jobs:
         cache: maven
 
     - name: Install Chrome 
+      uses: browser-actions/setup-chrome@v1  
+
+    - name: Install chromedriver
       run: | 
-       chmod +x ./src/test/resources/installChrome.sh
-        ./src/test/resources/installChrome.sh   
+            chmod +x ./src/test/resources/installChrome.sh
+            ./src/test/resources/installChrome.sh 
     
     - name: Run tests
       run:  mvn test -X
