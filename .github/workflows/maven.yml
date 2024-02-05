@@ -30,7 +30,7 @@ jobs:
     - name: Install chromedriver
       run: | 
             chmod +x ./src/test/resources/installChrome.sh
-            ./src/test/resources/installChrome.sh 
+            ./src/test/resources/installChrome.sh && chrome --version
     
     - name: Run tests
       run:  mvn test -X
