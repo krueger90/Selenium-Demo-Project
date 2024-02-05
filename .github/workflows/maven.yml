@@ -30,4 +30,4 @@ jobs:
         ./src/test/resources/installChrome.sh   
     
     - name: Run tests
-      run: whoami && mvn test -X
+      run: ls * && chdir /usr/bin/chromedriver && mvn test -X
