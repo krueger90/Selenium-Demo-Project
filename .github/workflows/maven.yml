@@ -33,4 +33,4 @@ jobs:
             ./src/test/resources/installChrome.sh && chrome --version
     
     - name: Run tests
-      run:  mvn test -X
+      run:  mvn test -DENV=PIPELINE -X
