@@ -27,10 +27,10 @@ jobs:
     - name: Install Chrome 
       uses: browser-actions/setup-chrome@v1  
 
-    - name: Install chromedriver
-      run: | 
-            chmod +x ./src/test/resources/installChrome.sh
-            ./src/test/resources/installChrome.sh && chrome --version
+    # - name: Install chromedriver
+    #   run: | 
+    #         chmod +x ./src/test/resources/installChrome.sh
+    #         ./src/test/resources/installChrome.sh && chrome --version
     
     - name: Run tests
-      run:  mvn test -DENV=PIPELINE -X
+      run:  mvn test -X

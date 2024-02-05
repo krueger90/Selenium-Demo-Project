@@ -20,21 +20,17 @@ public class Setup {
 
     @BeforeClass
     public void setup() {
-        if (System.getProperty("ENV") == "PIPELINE") {
-            ChromeOptions options = new ChromeOptions();
-
-            System.out.println(System.getProperty("ENV") + " AICI...");
+      
             options.addArguments("--no-sandbox");
             options.addArguments("--headless=new");
-            options.addArguments("--window-size=1920,1080");
             options.addArguments("--start-maximized");
             options.addArguments("--ignore-certificate-errors");
             options.addArguments("--disable-dev-shm-usage");
             driver = new ChromeDriver(options);
-        } else {
+      
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
             driver.manage().window().maximize();
-        }
+        
     }
 
     @BeforeMethod
