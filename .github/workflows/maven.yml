@@ -30,4 +30,4 @@ jobs:
         ./src/test/resources/installChrome.sh   
     
     - name: Run tests
-      run: cd ../../.. && cd /usr/bin/ && ls * && pwd
+      run: cd /usr/bin/ && ls * && pwd
