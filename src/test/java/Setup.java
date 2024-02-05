@@ -2,6 +2,8 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.annotations.AfterClass;
@@ -13,8 +15,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Setup {
 
-    protected WebDriver driver = new ChromeDriver();
-    ChromeOptions options = new ChromeOptions();
+    protected WebDriver driver = new FirefoxDriver();
+    FirefoxOptions options = new FirefoxOptions();
 
     Wait<WebDriver> wait = new FluentWait<>(driver)
             .withTimeout(Duration.ofSeconds(5))
@@ -22,13 +24,13 @@ public class Setup {
 
     @BeforeMethod
     public void setup() {
-          	 WebDriverManager.chromedriver().setup();
+          	 WebDriverManager.firefoxdriver().setup();
             options.addArguments("--no-sandbox");
             options.addArguments("--headless=new");
             options.addArguments("--start-maximized");
             options.addArguments("--ignore-certificate-errors");
             options.addArguments("--disable-dev-shm-usage");
-            driver = new ChromeDriver(options);
+            driver = new FirefoxDriver(options);
             driver.manage().window().maximize();
 
             driver.get("https://ecommerce-playground.lambdatest.io");
