@@ -18,17 +18,23 @@ public class Setup {
 
     @BeforeMethod
     public void setup() {
-        ChromeOptions options = new ChromeOptions();
+
+        if (System.getProperty("ENV") == "PIPELINE") {
+            ChromeOptions options = new ChromeOptions();
 
             options.setBinary("/opt/hostedtoolcache/chromium/latest/x64/chrome");
             options.addArguments("--no-sandbox");
             options.addArguments("--headless=new");
             options.addArguments("--disable-dev-shm-usage");
             driver = new ChromeDriver(options);
-            driver.manage().window().maximize();
             driver.get("https://ecommerce-playground.lambdatest.io");
+            driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        
+        }
+
+        driver.get("https://ecommerce-playground.lambdatest.io");
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @AfterMethod
