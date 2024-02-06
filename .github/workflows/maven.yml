@@ -25,7 +25,10 @@ jobs:
         cache: maven
 
     - name: Install Chrome 
-      uses: browser-actions/setup-chrome@v1  
+      id: setup-chrome
+      uses: browser-actions/setup-chrome@v1 
+    - run: |
+         ${{ steps.setup-chrome.outputs.chrome-path }} --version   
     
     - name: Run tests
       run:  mvn test -X
