@@ -24,16 +24,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Install firefox 
-      uses: browser-actions/setup-firefox@v1  
-
-    - name: Xvfb
-      run: | 
-            export DISPLAY=:15.0
-            Xvfb :15 -screen 0 1920x1080x24 > /dev/null 2>&1 &
-            touch ~/.Xauthority
-            xauth list
-          
+    - name: Install Chrome 
+      uses: browser-actions/setup-chrome@v1  
     
     - name: Run tests
       run:  mvn test -X
