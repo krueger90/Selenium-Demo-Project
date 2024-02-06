@@ -20,7 +20,7 @@ public class Setup {
     public void setup() {
         ChromeOptions options = new ChromeOptions();
 
-            options.setBinary("/usr/bin/google-chrome");
+            options.setBinary("/opt/hostedtoolcache/chromium/latest/x64/chrome.exe");
             options.addArguments("--no-sandbox");
             options.addArguments("--headless=new");
             options.addArguments("--disable-dev-shm-usage");
